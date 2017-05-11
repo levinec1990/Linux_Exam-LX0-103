@@ -1,0 +1,75 @@
+***Understanding Command Line Basics 
+####Exploring Your Linux Shell Options
+The shell is used to enter commands and there are a variety of shells. 
+-bash: bash is hte most common default shll for user accounts, and it's the one emphasized in this book. 
+-sh: The Bourne shell upon which bash is based goes bythe name sh. It's not often used in Linux and the sh command is often a pointer to the bash shell or other shells.
+-tcsh: This shell is based on the earlier C shell(csh), popular in some circles
+-csh: The original C shell isnt used much on Linux
+-ksh: The Korn shell(ksh) was designed to take the best features of the Bourne shell and the C shell and extend them. 
+-zsh: The Z shell(zsh)adds more improvents from the Korn shell
+
+There are two types of default shells. The defaults interactives shell is the shell program a user users to enter comamnds, run programs from the command line, run shell scripts, and so on. The other default shell tpe is a default system shell. The default system shell is used by the Linux system to run system shell scripts, typically at startup. 
+
+The file bin/sh is a pointer to the systems default system shell.
+
+####Starting a Shell
+ONce you start a terminal or log into a virtual console terminal, the shell will provide you with a prompt for entering commands. Remember that the shell is a program providing you with an interface to the Linux system. 
+
+A good first command to try, uname, will show you what operating system is being run
+
+$ uname
+Linux
+$
+
+That's not too interesting, you can find out more by tacking on the -a option to the command. 
+
+$ uname -a
+[output]
+$
+
+####Using Internal and External Commands
+Internal commands are commands built into the Shell program. Thus they are also called built-in commands. Most shells offer a similar set of internal commands, but shell-to-shell differences do exist. 
+
+Change the Working Directory: 
+$ cd /var/ftp
+
+A shortcut to your home directory
+$cd ~
+
+Display the working directory:
+$pwd
+
+Display a line of text:
+The echo command displays the text you enter. This may seem pointless but is usefull for scripts.
+$echo Hello
+hello
+$
+
+Time an Operation:
+The time command times how long subsequent commands take to execute. For instance, typing time pwd tells you how long the system take to execute. 
+
+Three times are displayed, total execution time, user CPU time, and system CPU time. 
+
+$time pwd
+/home/ubuntu
+real  0m0.000s
+user  0m0.000s
+sys   0m0.000s
+
+Set Options:
+The set command displays a wide variety of options relating to bash shell operation. 
+
+Terminate the Shell:
+The exit and logout commands both terminate the shell. The exit command terminates any shell, but the logout command terminates only login shells. 
+
+Login shells are shell programs that are launched automatically when you initiate a text mode login as opposed ot those that run in xterm windows or other terminal emulators. 
+
+Determining if a command is a built in command:
+You can determine if a command is a built in command by using the type command.
+$type pwd
+pwd is a shell builtin
+$
+$type cd
+cd is a shell builtin
+
+{left on page 7}
