@@ -103,3 +103,5 @@ Changing Case:
 Invoke an Editor:
   Pressing Ctrl+X followed by Ctrl+E launches a full-fledged editor. 
   It launchs the editor defined by $FCEDIT, $EDITOR, or Emacs as a last resort. 
+  
+  {Left on page 12}
