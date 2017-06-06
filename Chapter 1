@@ -72,4 +72,34 @@ $
 $type cd
 cd is a shell builtin
 
-{left on page 7}
+####Performing Some Shell Command Tricks
+Command Completion: 
+  Type part of the word/command and press the TAB key
+History: 
+  The shell history keeps a record of every command you type.
+  You can execute a command by number by typing ! followed by a number
+  An example would be !210
+  You can clear history by running history -c
+Retrieve a command: 
+  You can use the Up arrow repeatdely to find a previously type command
+Search for a Command: 
+  Press Ctrl + R to begin a backward (reverse) search, and begin typing characters that should be unique to the command you want.
+  Press Ctrl+ S to search forward in the command history 
+Move within the line: 
+  Press Ctrl+A or Ctrl+E to move to the start/end of the line respectively. 
+  Pressing Ctrl plus the Left or Right arrow key moves backward or forward a word at a time 
+Delete text: 
+  Pressing Ctrl+D or the delete key deletes the character under the cursor. 
+  Pressing the Backspace key deletes the character left of the cursor. 
+  Pressing Ctrl+K deletes all text from the cursor to the end of the line. 
+  Pressing Ctrl+X and then Backspace deletes all of the text from the cursor to the begining of the line. 
+Transpose Text:
+  Pressing Ctrl+T transposes the character before the cursor with the characters under the cursor.
+  Pressing Esc and then T transposes the two words immediately before (or under) the cursor. 
+Changing Case:
+  Pressing Esc and then U converts text from teh cursor to the end of the word to uppercase. 
+  Pressing Esc and then L converts text from the cursor to the end of the word to lowercase. 
+  Pressing Esc and then C converts the letter under the cursor to uppercase, leaving the rest of the word unaffected. 
+Invoke an Editor:
+  Pressing Ctrl+X followed by Ctrl+E launches a full-fledged editor. 
+  It launchs the editor defined by $FCEDIT, $EDITOR, or Emacs as a last resort. 
