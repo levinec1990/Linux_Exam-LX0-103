@@ -104,4 +104,109 @@ Invoke an Editor:
   Pressing Ctrl+X followed by Ctrl+E launches a full-fledged editor. 
   It launchs the editor defined by $FCEDIT, $EDITOR, or Emacs as a last resort. 
   
-  {Left on page 12}
+ History: 
+  History command shows history
+  To get latest command type !! and enter
+  You can execute a command by number via typing and an exclamation mark as in !210
+  
+ ****Exploring Shell Configuration****
+Shells like many Linux programs are configured through files that hold configuration options in a plain-text format. The bash configuration files are atually bash shell scripts. 
+A copule of examples of these configuration files are ~/.bashrc and /etc/profile
+
+****Using Enviroment Variables****
+Environment variables are like variables in programming languages-they hold data to be referred to by the variable name. 
+Enviroment variables differ from programs internal variables in that they're part of the programs enviroment. 
+
+You can set them in bash by using an assignment(=) operator followed by the export command. 
+
+$ 
+$ PS1="my New Prompt: "
+My New Prompt: export PS1
+My New Prompt:
+
+You can combine these two commands into a signle form:
+My New Prompt: export PS1="Prompt: "
+Prompt:
+Prompt:
+
+When setting an enviroment variable you omit the dollar sign but subsequent references include a dollar sign to identify the enviroment variable as such. 
+
+$ Prompt: echo $PS1
+Prompt:
+
+An echo of the prompt command can be a littel confusing because it just shows your current prompt setting. You can get a better feel for displaying an environment by using echo:
+Prompt: echo $PATH
+
+To delete a enviroment varialbe use the unset command.
+
+****GETTING HELP****
+You can use the man command to get help
+
+To get help from man you can type
+man man
+
+You aren't stuck with using the less pager with the man utitly. You can change this using the -P option. 
+
+If you wanted to use more on the uname command you coulld run 
+man -P /bin/more uname
+
+If you can't remember the command you are looking for you can use the -k option to help look the command up
+$ man -k "system information"
+
+Some programs use info pages instead because of hypertext format
+info info
+
+Also there are pages specifically for the built in commands
+help pwd
+help help
+
+****USING STREAMS, REDIRECTION, and PIPES****
+Exploring file descriptors:
+  Standard input:Information that comes from the keyboard. File descriptor is 0
+  Standard output:Standard output is normally displayed on the screen. File descriptor is 1
+  Standard error: Another output stream that shows error. File descriptor is 2. 
+  
+****Redirecting Input and Output****
+To redirect output, you use operators following the command, including any options it takes. 
+
+$ echo $PATH 1 > path.txt
+$
+$ cat path.txt
+
+Result is that the file path.txt contains the output of the command. Operator used was > and file descriptor was 1
+
+You can leave out the file descriptor
+$ echo $PATH > another_path.txt
+
+Common redirection operators
+  >: Creates a new file containg standard output. If the specified file exists, it is overwritten.
+  >>:Apppends standards output to existing file.
+  2>:Creats a new file containing standard error. File descriptor necessary and overwrites existing file
+  2>:Same as above but appends to existing file
+  &>:Creates a new file containg both standard output and standard error. File is overwritten if it exists
+  <: Send the content of the specified file to be used as standard input.
+  <<:Accepts text on the follwoign lines as standard input. 
+  <>:Causes the specified file to be used for both standard input and standard output.
+  
+ A common trick is to redirect standard error to /dev/null
+ $ whine 2> /dev/null
+ 
+ ****Piping Data between Programs****
+ Programs can frequently operate on other programs' outputs. 
+ A pipe redirects the first programs standard output to the second porgrams standard input, and it is dentoed by a vertical bar (|):
+ $ first | second
+ 
+ Pipes can be used in sequences of arbitrary lengths
+ $ first | second | third
+ 
+ Another redirection command frequently used is the tee command. The command splits standard input so that its displayed on standard output and in as many files as you can specify.
+$echo $PATH |tee path.txt
+
+The output would be shown and path.txt would be created. 
+
+****GENERATING COMMAND LINES****
+Left on page 20
+ 
+ 
+ 
+ 
