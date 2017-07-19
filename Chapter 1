@@ -205,8 +205,110 @@ $echo $PATH |tee path.txt
 The output would be shown and path.txt would be created. 
 
 ****GENERATING COMMAND LINES****
-Left on page 20
- 
+The xargs command builds a command from its standard input. 
+xargs [options] [command[initial-arguments]]
+
+The options are xargs options; they arent passed to command.
+
+Consider the task of deleting several files that belong to a particular usesr. 
+
+# find / -user Christine | xargs -d "\n" rm
+
+The first part of this command(find /-user Christine) finds all of the files in directory tree(/) and its subdirectories that belong to user Christine. 
+
+The list is piped to xargs which adds each input value to its own rm command. 
+The -d "\n" option tells xargs to use only newlines as delimiters
+
+You can also use backtick(`) the key to the left of the one key although this is failing out of favor
+
+rm `find ./ =user Christine`
+
+****PROCESSING TEXT USING FILTERS*****
+Combing files with cat(concatenate)
+-Links together an arbitrary number of files end to end and send the result to standard output
+
+$cat first.txt second.txt > combined.txt
+
+Can also view files with cat but for larger files another command wouuld be better.
+Some common options
+Display Line Ends: -E --show-ends
+Number Lines: -n or --number
+Minimize blank lines: -s or --squeeze-blank
+Display Special Chracters: -T or --show-tabs
+
+The command tac just reverse the order of lines in the output
+$ tac combined.txt
+
+----Joining Files by Filed with join----
+The join command combines two files by matching the contents of specified fields within the file. 
+
+Example A
+555 Beckett, Barry
+666 Carter , Gertrude
+777 Jones, Theresa
+888 Orwell , Samuel
+
+Example B
+555 unlisted
+666 listed
+777 listed
+888 unlisted
+
+$join exampleA.txt exampleB.txt
+555 Beckett, Barry unlisted
+666 Carter , Gertrude listed
+777 Jones, Theresa listed
+888 Orwell , Samuel unlisted
+
+You can also specifiy what to join
+$ join -1 3 -2 2 cameras.txt lenses.txt
+
+This 
+-Joins using the third field in cameras.txt AND
+-Joins using the second field in lenses.txt
+
+----Merging Lines with paste----
+The paste command merges files line by line serparting the linese form each file with tabs using the examples above
+
+$ paste listing1.1.txt listing1.2.txt
+555 Beckett, Barry  555 unlisted  
+666 Carter , Gertrude 666 listed
+777 Jones, Theresa  777 listed
+888 Orwell , Samuel 888 unlisted
+
+****FILE TRANSFORMING COMMANDS****
+----Converting Tabs to Spaces with expand----
+Sometimes text files contain tabs but programs that need to process the files don't cope well with tabs. 
+
+$ expand
+
+----DISPLAYING FILES IN OCTAL with od----
+Some files aren't easily displayed in ASCII so you can use octal
+
+$od listing1.2.txt
+00000000 ....
+
+----SORTING FILES WITH sort-----
+Sometimes you create an output file that you want sorted. sort can sort in serveral ways
+Ignore Case: -f or --ignore-case
+Month Sort: -M 
+Numeric sort: -n or --numeric-sort
+Reverse sort order: -r or --reverse
+Sort Field: -k /by default uses first field can specify field with -k 3
+
+----BREAKING A FILE INTO PIECES WITH split----
+The split command can split a file into two or more files. 
+Split by Bytes: -b
+Split by Bytes in Line-Sized Chunks:-C=size 
+Split by Number of Lines: -l lines
+
+An example
+$ split 0l 2 listing1.1.txt numbers
+
+Result is two files numbersaa and numbersab which together hold the original contents of listing1.1.txt
+
+----Translating Characters WITH tr----
+Left on page 27
  
  
  
