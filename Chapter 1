@@ -308,7 +308,84 @@ $ split 0l 2 listing1.1.txt numbers
 Result is two files numbersaa and numbersab which together hold the original contents of listing1.1.txt
 
 ----Translating Characters WITH tr----
-Left on page 27
+The tr command changes individual character from standard input. 
+
+tr [options] SET1 [SET2]
+
+An example is 
+tr BCJ bc < listing1.1.txt
+
+bckett, barry
+carter, Gertrude
+cones, Theresa
+Orwell, Samuel
+
+Where the Captial B's and C's were changed to lowercase. 
+
+However "cones" should be Jones
+
+You can use 
+-t to match the first set to the second set. 
+
+----Converting Spaces to Tabs with unexpand----
+The unexpand command is the opposite of expand; it converts multiple spaces to tabs. 
+
+----DELETING DUPLICATES LINES WITH uniq----
+uniq command removes duplicate lines. 
+
+In the example of a file with the following lines "To be or not to be, that is the question" (One word per line)
+
+$ sort shakespeare.txt | uniq
+be
+is
+not
+or
+question
+that
+the
+to
+
+Words "to" and "be" which appeared in the original file twice, appear only once in the uniq-processed version. 
+
+****FILE-FORMATTING COMMANDS****
+----Reformating Paragrapsh with fmt----
+Sometimes files come with long line lengths, irregular line lengths or other problems. 
+
+You can use fmt to clean up paragraphs which it assumes are delimited by two or more blank lines or by changes in indentation.
+
+----Numbering Lines with nl-----
+Used to number lines in a file with many options
+
+Body Numbering Style:You can set the numbering sytle for the bulk of the lines with the -b style 
+Header and Footer Numbering Style:If the text is formatted for printing and has header/footer you can use 
+-h style (For Header)
+-f style (For Footer)
+
+Page Seperator: Some numbering schemes reset the line number for each page. Use nl to identify a new page with the -d code
+
+Line-Number Options for New Pages: Ordinarily nl begins bumbering each new page with line 1. If you pass the -p it does not reset the numbering
+
+Number format: You can specify number fortmat with the -n format where format is ln(left justified), rn(right justifie dno leading zero's) or rz(right justified, with leading zero's)
+
+STYLES USED BY nl
+t:Default behavior to not number empty lines
+a:All lines are numbered
+n:All line numbers are ommited(Desirable for header/footer)
+pREGEXP: Causes only lines that match the specified REGEXP to be numbered
+
+Example: You create a line script that has errors and when you run it you get reference to line numbers so you want to add lines. 
+
+nl -b a buggy > numbered-buggy.txt
+
+----Preparing a File for Printing with pr----
+If you want to print a plain text file you may want to prepare it with headers, footers, page breaks, etc
+
+Most basic form is 
+$ pr myfile.txt
+
+By default, pr creates output that includes the original tet tih headers, which lists the current date and time, the orginal filename and page number.
+
+LEFT ON PAGE 30
  
  
  
