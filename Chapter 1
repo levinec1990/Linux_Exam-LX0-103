@@ -385,7 +385,47 @@ $ pr myfile.txt
 
 By default, pr creates output that includes the original tet tih headers, which lists the current date and time, the orginal filename and page number.
 
-LEFT ON PAGE 30
+****FILE-VIEWING COMMANDS****
+----Viewing the starts of Files with head----
+Head command echoes the first 10 lines of one or more files to standard output. You can modify the info in 2 ways
+-Specifiy the number of bytes: -c or --bytes=num
+-Specifiy the number of lines: -n num or --lines=num
+
+----Viewing the end of Files with tail----
+Works just like head but displays the last ten lines
+
+Supports several options that are not present in head that are helpful
+-Track a file: -f, tells tails to keep file open and display new lines as they are added. Good for log files.
+-Stop tracking on Program termination: --pid=pid tells tail to terminate tracking(as iniated by -f or --follow) once process of pid terminates
+
+----Paging through files with less----
+The idea behind less is to enabled you to read a file a screen at a time.
+-Space moves forward through the file a screen at a time
+-UP/Down one line at a time
+-Seach by doing (/) follwod by search term
+-Search backward by using (?)
+-Move to specific line with (g) as in g50 for line 50
+-q to quit
+
+****FILE-SUMMARIZING COMMANDS****
+----Extracting text with cut----
+Cut command extracts portions of input lines and displays them on standard output. 
+
+You can specifiy what to cut from input lines in several ways:
+-By Byte: -b list cuts the specified list of bytes from the input file
+-By Character: -c list cuts the specified list of characters from the input file.
+-By Field: -f list cuts the specified list of filed from the input file.
+
+Many of these options take a list option, which is a way to specifiy multiple bytes/characters/fields.
+You make this specification by number which can be a single number(4), a closed range(2-4), or an open range(4-)
+
+----Obtaining a Word Count with wc----
+The wc command produces a word count as well as line and by counts for a file:
+$wc file.txt
+308 2343 15534 file.txt
+
+****USING REGULAR EXPRESSIONS****
+
  
  
  
