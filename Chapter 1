@@ -425,7 +425,48 @@ $wc file.txt
 308 2343 15534 file.txt
 
 ****USING REGULAR EXPRESSIONS****
-Page 35
+----Understanding Regular Expressions----
+Regular expressions are tools for describing or matching patterns in text. 
+Two forms of regular expressions are common, basic and extended.
+
+The strength of Regex comes from the use of nonalphabetic characters. 
+
+Bracket Expressions: Characters enclosed in square brackets([]) match any one character within the brackets. 
+                     Example would be b[aeiou]g which matches the word bag, beg, big, bog, and bug
+                     
+Range Expressions:Variant of the bracket expression. Range expressions list the start and end points seperated by a day
+                  Example would be a[2-4] which matches a2z, a3z, and a4z. 
+                  
+Any single character:The dot (.) represents any single character except a newline. 
+                     Example a.z matches a2z, abz, aQz or any three character string that begins with a and ends with z
+                     
+Start and End of a line: The carat(^) represent the start of a line, and the dollar sign($) denotes the end of a line
+
+Repetition Operators:A full or partial regex may be follwed by a special symbol to denote how many times a matching item must exist.
+                     Asterik (*) denotes zero or more occurences
+                     Plus sign (+) matches one or more occurences
+                     Question (?) specifies zero or one match
+                     
+                     Asterik is often usen to specify a match within a substring. A.*Lincoln matchs any string that contains A and                            Lincoln, in that order
  
+ Multiple Possible Strings: Vertical bar (|) separates two possible matches; for instance car\truck matches either car or truck. 
+ 
+ Parentheses: Ordinary parenthese (()) surround subexpressions. Often used to specify how opeartors are to be applied. 
+              For example you can plut parentheses around a group of wrods that are concatenated with the vertical bar to ensure the                   words are treated as a group.  
+              
+Escaping: IF you want to match one of the special characters you must escape it. To match a computer hostname twain\.example\.com
+
+----Using grep----
+The grep command searches for files that contain a specified string and returns the name of the file and if its a text file the context for the string. 
+
+The basic grep syntax
+
+grep [options] regexp [files]
+
+The grep command supports a large number of options 
+
+Count matching lines: -c, dispalys the number of lines that match the specified pattern. 
+
+LEFT ON PAGE 37
  
  
