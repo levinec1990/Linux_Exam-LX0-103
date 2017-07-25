@@ -466,7 +466,36 @@ grep [options] regexp [files]
 The grep command supports a large number of options 
 
 Count matching lines: -c, dispalys the number of lines that match the specified pattern. 
+Ignore Case: -i, to not search case sensitively. 
+Search Recursively: -r, searches in the specified directory and all subdirectories. You can also use rgrep
+Use a Fixed Strings Pattern:-F to use basic pattern searching. You can also use fgrep
+Use an extended regex: -E, or use egrep
 
-LEFT ON PAGE 37
+----Using sed----
+Sed command directly modifies a file's contents, sending the changed file to standard output. 
+
+sed [options] -f script-file [input-file]
+sed options script-text [input-file]
+
+Input file is the name of the file you want to modify.
+Script is the set of command you want sed to perform. 
+
+Common sed commands
+Command              Addresses   Meaning
+=                    0 or 1      Display the current line number
+a\text               0 or 1      Append text to the file
+i\text               0 or 1      Insert text into the file
+r filename           0 or 1      Append text from filename into the file
+c\text               Range       Replace the selected range of lines with the provided text.
+s/regexp/replacement Range       Replace text that matches the regexp with replacement
+w filename           Range       Write the current pattern space to the specified file
+q                    0 or 1      Immediately quit the script but priint the current pattern space
+Q                    0 or 1      Immediately quit the script 
+
+The address column needs elaboration. sed commands operate on addresses which are line numbers. Commands may take no addresses in which case they operate on the entire file. If one address is specified, they opearte on the specified line. If a range is specified, the commands opeare 
+
+
+
+
  
  
