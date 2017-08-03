@@ -492,7 +492,13 @@ w filename           Range       Write the current pattern space to the specifie
 q                    0 or 1      Immediately quit the script but priint the current pattern space
 Q                    0 or 1      Immediately quit the script 
 
-The address column needs elaboration. sed commands operate on addresses which are line numbers. Commands may take no addresses in which case they operate on the entire file. If one address is specified, they opearte on the specified line. If a range is specified, the commands opeare 
+The address column needs elaboration. sed commands operate on addresses which are line numbers. Commands may take no addresses in which case they operate on the entire file. If one address is specified, they opearte on the specified line. If a range is specified, the commands operate on that range of lines. 
+
+$ sed 's/2012/2013/' cal-2012.txt > cal-2013.txt
+
+Processes the input file, cal-2012.txt to replace the occurence of 2012 on each line with 2013. Then it uses redirection to create the new cal-2013.txt file. 
+
+
 
 
 
