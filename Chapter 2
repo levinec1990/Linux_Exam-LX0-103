@@ -1,0 +1,8 @@
+------------------------------------------------MANAGING SOFTWARE-------------------------------------------------------------------------
+
+****Package Concepts****
+Any computer's software is like a house of cards: One program may rely on multiple other programs or libraries, each of which relies on serveral more, and so on. 
+
+Linux package management tools are intended to help build and modify this house of cards by tracking what software is installed. The information the system maintains helps to avoid problems in several ways:
+
+Packages:The most basic information that package systems maintain is information about software packages -- that is, collections of files that are installed on the computer. Packages are usually distributred as tarballs or zipfiles, which are one file that contain many files. Packages include additional information that aids in the subsequent duties of packages management systems. 
