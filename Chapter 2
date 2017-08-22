@@ -6,3 +6,64 @@ Any computer's software is like a house of cards: One program may rely on multip
 Linux package management tools are intended to help build and modify this house of cards by tracking what software is installed. The information the system maintains helps to avoid problems in several ways:
 
 Packages:The most basic information that package systems maintain is information about software packages -- that is, collections of files that are installed on the computer. Packages are usually distributred as tarballs or zipfiles, which are one file that contain many files. Packages include additional information that aids in the subsequent duties of packages management systems. 
+
+Installed File Database: Package systems maintain a database of installed files. The database includes information about every file installed via the package system, the name of the package to which each of those files belongs and associated additional information. 
+
+Dependencies: Dependency info is very important, it is the requirements of packages for one another. If Program A requires Program B, the package database records this information. If you try to install Program A without Program B, it wont let you do so. If you try to uninstall Program B while Program A is installed it will not let you do so. 
+
+Checksums: Information used to verify the validity of the installed software. 
+
+Upgrades and Uninstallation: By tracking files and dependencies, package systems permit easy upgrades and uninstallation: it will remove every file in the package for you unless there are dependencies. 
+
+Binary Package Creation: Both the RPM and Debian package systems provide tools to help create binary packages(those that are installed directly from source code. This feature is particulary helpful if you are running LInux on a peculiar CPU. 
+
+****USING RPM****
+The most popular packages manager in the Linux world is the RPM Package Manager(RPM) developed by Red Hat. 
+
+Red hat has splintered into three distro's
+  Fedora: For home users, students, and businesses on a tight budget
+  Red Hat: For the pay version of the distro, known formally as Red Hat Enterprise Linux(RHEL)
+  Centos: A freely redistributatble version intended for enterprise users. 
+  
+The convention for naming RPM packages 
+packagename-a.b.c-x.arch.rpm
+
+Package name: The name of hte package such as samba or samba-server for the Samba file and print server. 
+
+Version number(a.b.c): The package version number
+
+Build number(-x): Represents minor changes made by the package maintainer, not by the program author. 
+
+Architecture: A code for the package's architecture. I386 architecture code is common; it represents a file compiled for any x86 CPU from the 80386 onward. 
+
+Compatibilty issues can occur
+*Distro's may use differnet version fo the RPM utilities. 
+*RPM package designed for one distro may have dependencies that are unmet in another distro. 
+*RPM package may be built to depend on a package of a particular name but if distro has different name it can break
+*Different distro's may include slightly different files in their packages.
+*Some programs use distro specific scripts
+
+Use the RPM's intended for your distro. 
+
+****The rpm Command Set****
+The main RPM utility program is known as rpm. Use this program to install or upgrade a package at the shell prompt. 
+
+rpm[operation][options] [package-files|package-names}
+
+Common rpm operations
+
+-i: Installs a package
+
+-U: Installs a new package or upgrades an existing one
+
+-F:Upgrades a packages only if an earlier version exist
+
+-q: Queries a package-finds whether a packages is installed, what files it contains, and so on. 
+
+-V: Verifies a package-checks that its files are present and unchanged since installlation. 
+
+-e: Uninstalls a package
+
+-b: Builds a binary package, given source code and configuration files
+
+--rebuild
