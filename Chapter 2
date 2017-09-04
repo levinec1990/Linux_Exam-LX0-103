@@ -66,4 +66,125 @@ Common rpm operations
 
 -b: Builds a binary package, given source code and configuration files
 
---rebuild
+--rebuild: Builds a binary package, given a source RPM file; moved to the rpmbuild program with RPM version 4.2
+
+--rebuilddb: Rebuilds the RPM database to fix errors
+
+Most Important rpm options
+*root dir:
+:Any operations
+:Modifies the Linux system having a root directory located at dir. This option can be used to maintain one Linux installation discrete from another one
+
+*force:
+:-i, -U, -F
+:Forces installation of a package even when it means overwriting existing files or packages
+
+* -h or --hash:
+: -i, -U, -F 
+:Displays a series of hash marks(#) to indicate the progress of the operation
+
+* -v:
+:-i,-U,-F 
+:Displays a series of hash marks(#) to indicate the progress of the operation
+
+* --nodeps
+: -i,-U,-F,-e
+:Specifies that no dependency checks be performed. Installs/Removes package even if it relies on a package or file that not present or is required by a package that not being unistalled. 
+
+* --test
+: -i, -U, -F
+:Check for dependencies, conflicts, and other problems without actually installing the package
+
+* --prefix path
+: -i ,-U, -F
+Sets the installation directory to path(works only for some packages)
+
+* -a or --all
+: -q, -V
+:Queries or verifies all packages
+
+* -f file or -- file file
+: -q, -V 
+:Queries or verifies the package that owns file
+
+* -p package-file
+: -q
+: Queries the uninstalled RPM package-file
+
+* -i 
+: -q
+: Displays package information, including the package maintainer, a short description, and so on
+
+* -R or --requires
+: -q
+: Displays the packages and files on which this one depends
+
+* -l or --list
+: -q
+: Displays the files contained in the package
+
+To use RPM you combine one operation with one or more options. 
+
+To use rpm to install or upgrade a package from an RPM file that you have already downloaded:
+# rpm -Uvh filename.rpm
+
+You can then verify that the package is installed with the rpm -qi command, which displays information such as when and on what computer the binary package was built.
+
+# rpm -qi samba
+
+****Extracting Data from RPMS****
+Occasionally you may want to extract data from RPMS wihtout installing the package; For example to retrieve the original source code from a source RPM for compiling the software without the help of RPM tools.
+
+RPM files are actually modified cpio archives. You will need to use rpm2cpio program that ships with most distro's
+
+$ rpm2cpio samba-4.1.9.4.fc20.src.rpm > samba-4.1.9-4.fc20.src.cpio
+
+****Using Yum****
+Yum is one of several meta-packagers--it enables you to install a package and all its dependencies easily using a single command line. 
+
+Yum is used in Red Hat, CentOS, Fedora, and some other RPM-based distribuitions. 
+
+The most basic way to use YUM is with the yum command:
+yum [options] [command] [package...]
+
+Which options are available depend on the command you use
+
+--Common YUM commands--
+install: Installs one or more packages by package name. Also installs dependencies of the specified package or packages
+
+update: Updates the specified package/packages to latest available version. If no packages specified, YUM updates all packages
+
+check-update: YUM checks to see whether update is available
+
+upgrade: Works like update with the --obsoletes flag set, which handles obsolete packages in a way thats superior when performing a distro version upgrade
+
+remove or erase: Delete a package from the system; YUM also removes depended on packages
+
+list: Displays information about a package, such as the installed version and whether an update is available. 
+
+provides or whatprovides: Displays info about packages that provide a specified program or feature. For instance; yum provides samba lists all the Samba-related packages
+
+search: Searches package names/sumaries/packagers/descriptions for a specified keyword
+
+info: Displays info about a package
+
+clean: Cleans up the YUM cache directory 
+
+shell: Enters the Yum shell mode; in which you can enter multiple YUM commands one after another
+
+resolvedep: Displays packages matching the specified dependency
+
+localinstall: Installs the specified local RPM files, using your Yum repositories to resolve dependencies. 
+
+localupdate: Updates the system using the specified local RPM files. 
+
+deplist: Displays dependencies of the specified package. 
+
+-If you prefer to use GUI tools rather than command line tools, these exist as yumex and kyum. 
+yum install kyum
+
+Left on page 59
+
+
+
+
