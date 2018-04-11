@@ -1,0 +1,91 @@
+BASIC COMMANDS
+
+ls(list) = list directory contents
+
+$ ls Downloads/ [List the content of Downloads]
+
+pwd(print working directory) = Prints the current directory you are in 
+
+$ pwd
+/home/Chris
+
+cd(Change directory) =Changes the directory
+
+$cd Downloads
+
+touch = Creates an empty file
+
+$ touch myemptyfile.txt
+
+cat(concatenate) = Concatenate files and print on the standard input. 
+
+$ cat myawesomefile.txt
+[Output of file]
+
+mkdir(Make Directory) = Creates a directory
+
+$ mkdir [name of directory]
+
+mv(move) = Moves a file/rename a file
+
+$ mv [SOURCE] [DESTINATION]
+$ mv myawesomefile.txt aplaceforawesomeness/
+
+rm(remove) = Removes files or directories
+
+$ rm [file]
+$ rm afile.txt
+
+To remove a directory that is not empty
+
+$ rm -r [Directory]
+$ rm -r adirectory/
+
+rmdir(Remove diretory) = Removes Empty Directories
+
+$ rmdir [directory]
+$ rmdir aplaceforawesomeness
+
+man(manual) = Displays the manual page for a command
+
+$ man [command/program]
+$ man ls
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+PACKAGE MANAGEMENT
+
+sudo (super User do) = Allows a permitted user to execute command as the superuser(root)
+$ sudo apt-get update
+
+apt-get = A package manager for Debian based systems. Does 
+Dependency Resolution
+Compute which packages need to be downloaded
+Download Package files 
+Install package Files
+
+$ sudo apt-get update [Find updates]
+$ sudo apt-get upgrade [Install updates]
+
+apt-cache = Searches and returns for packages on a Debian system
+
+$ apt-cache search [search phrase]
+$ apt-cache search tmux
+
+To install
+$ sudo apt-get install tmux [Install]
+
+To remove
+$ apt-get remove [Uninstall]
+
