@@ -1,4 +1,4 @@
-BASIC COMMANDS
+***BASIC COMMANDS***
 
 ls(list) = list directory contents
 
@@ -51,6 +51,37 @@ man(manual) = Displays the manual page for a command
 $ man [command/program]
 $ man ls
 
+***WORKING WITH FILES***
+
+head = Print the first 10 lines of each File to standard output
+
+$ head [option] file
+$ head file.txt
+
+tail = Print the last 10 lines of each File to standard output
+
+$ tail [option] file
+$ tail file.txt
+
+Useful option is -f which lets you see new addition to files, useful for looking at files
+
+ln(link) = Make links between files
+
+$ ln [target] [link_name]
+
+Can also be used to make symbolic links(Links that link to another link)
+
+$ ln -s file1.txt file2.txt
+
+***SHELL SHORTCUTS BASH ****
+ctrl-a (beginning of line)
+ctrl-e (end of line)
+ctrl-r (backwards history search)
+ctrl-c to interrupt
+clear
+closing connections/terminals -ctrl-d
+
+poweroff / init 0 / shutdown -h now
 
 
 
@@ -63,8 +94,7 @@ $ man ls
 
 
 
-
-PACKAGE MANAGEMENT
+***PACKAGE MANAGEMENT***
 
 sudo (super User do) = Allows a permitted user to execute command as the superuser(root)
 $ sudo apt-get update
