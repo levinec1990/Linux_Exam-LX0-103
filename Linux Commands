@@ -83,9 +83,102 @@ closing connections/terminals -ctrl-d
 
 poweroff / init 0 / shutdown -h now
 
+***Whats Happening on this machine***
 
+w - Shows who is logged on this system and what they are doing
 
+$ w
 
+Output
+user - user name
+tty - Terminal type such as pts/0 or console
+From - The remote host or IP address
+Login@ - Login time
+IDLE - Idle time
+JCPU - The JCPU time is the time used by all processes attached to the tty. 
+PCPU - The PCPU time is the time used by the current process displayed in WHAT field
+WHAT - The command line of users current process
+
+top - Display linux processes
+
+$ top
+
+Output (https://www.booleanworld.com/guide-linux-top-command/)
+-System time, uptime and user sessions on the first line
+
+-Tasks on the second line, task states are below and how they fall into the 2nd line in top
+  total = Total number of processes
+  running(R) = Processes that are executing on the CPU or in the run queue ready to be executed[Running]
+  Interruptible sleep(D) = Processes that are waiting for an event to complete[Sleeping]
+  Uninterruptible sleep(S) = A process that is waiting for an I/O operation to complete[Sleeping]
+  Stopped(T) = Processes that have been stoppe dby a job control signal[Stopped]
+  Zombie(Z) = Terminated processes whose data structures are still around[Zombie]
+  
+-Memory Usage ; Split into two parts 
+  mem - Physical Memory
+  swap - Swap space is a part of the hard disk that is used like RAM. When RAM usage gets too high,
+         infrequently used regions of the RAM are written into the swap space. Relying too much on swap hurts system performance
+         
+-Load Average ; First line
+  Explained; A load average of 0.4 means the system is doing only 40% of work it can do. 
+             A load average of 1 means that the system is exactly at capacity. 
+             
+-The Task Area
+  PID = Process ID, uniquly identifies a process
+  USER = User who started the process
+  PR/NI = The NI field shows the "nice" value of a process. The PR field shows scheduling priority from the Kernels view. 
+  VIRT = Total ammount of memory consumed by the process
+  RES = Memory consumed by the process in RAM
+  %MEM = RES value as percentage of total RAM available
+  SHR = The ammount of memory shared with other processes
+  S = States the process can be in the single letter form
+  TIME+ = Total CPU time used by process since it started
+  COMMAND = Shows the name of the process
+
+netstat - Print network connections, routing tables, interface statistics
+
+$ netstat
+
+Output explained
+  Proto: TCP/UDP
+  Recv-Q: How much data is in the queue waiting to be read. Zero is good, non zero is bad
+  Send-Q: How much data is in the queue waiting to be sent. Zero is good, non zero is bad
+  Local Address: Which hosts and ports the listed sockets are connected, local is always the computer/server you are on
+  Foreign Address: The remote computer/server to which the socket is connected. 
+  State: Tells in which states the listed sockets are
+        Listen(Wait for external computer/server to contact us)
+        Established(ready for communication)
+        Clos Wait(Remote host closed the connection, local program has not)
+  PID/Program Name : Which PID owns the listed socket and the name of the program running in the process with that pid. 
+  
+  If the Foreign address is *.* the socket is waiting for remote host to send the first data
+  
+  Command examples
+  -List all Ports
+  $ netstat -a (List All ports)
+  $ netstat -at (List all TCP ports)
+  $ netstat -au (List all UDP ports)
+  
+  -List Sockets in Listening state
+  $ netstat -l(All ports in Listening state)
+  $ netstat -lt(All TCP ports in Listening state)
+  
+  -Show Statistics for each protocol
+  $ netstat -s
+  
+  -Display PID and program names in output
+  $ netstat -pt
+  
+  -Don't resolve Hostname, port, and user name
+  $ netstat -an
+  
+  -Print Netstat continuously
+  $ netstat -c
+  
+  -Find out which port a program is running
+  $ netstat -ap | grep ssh
+  
+  
 
 
 
