@@ -325,3 +325,66 @@ $ sudo apt-get install tmux [Install]
 To remove
 $ apt-get remove [Uninstall]
 
+***LINUX FILE PERMISSIONS***
+
+Files and directories have permissions in Linux
+
+-rw-r--r-- 1 root   root      0 Apr 18 12:57 exampleoffile.txt
+
+The permissions are broken into 4 sections
+- = Indicates a file (-), a directory (d), or a link (l)
+rwx = Read, write, and execute permissions for the owner of the file
+r-- = Read, write, and execute permissions for members of the group owning the file
+r-- = Read, write, and execute permissions for other users
+
+So taking the file above
+- = a file
+rw- = Read, write, but not execute for the owner
+r-- = Read only for the members of the group owning the file
+r-- = Read only for other users
+
+r = read file
+w = write file
+x = execute file
+
+*Changing Permissions using chmod*
+
+chmod - Change file mode bits
+
+$ chmod 777 somefile.txt
+
+Permissions in numeric mode
+
+0 = No permission
+1 = Execute
+2= Write
+3 = Read
+
+Add up the numbers depending on the level of permission you want to give
+
+0 = ---
+1 = --x
+2 = -w-
+3 = -wx
+4 = r-
+5 = r-x
+6 = rw-
+7 = rwx
+
+Permissions in symbolic permissions notation
+
+u = user
+g = group
+o = other
+
+$ chmod u=rwx, g=rx, o=r somefile.txt
+
+[User can read,write,execute - group can read,execute - other users can read only]
+
+*Change Owner*
+
+chown = Change file owner and group
+
+$ chown [owner] [group]
+
+***Basic Linux Access Control***
