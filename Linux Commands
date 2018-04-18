@@ -388,3 +388,9 @@ chown = Change file owner and group
 $ chown [owner] [group]
 
 ***Basic Linux Access Control***
+
+whoami = print who you are logged in as
+
+id = print user and effective group ids 
+
+***User Account Management***
