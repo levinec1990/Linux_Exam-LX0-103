@@ -179,12 +179,125 @@ Output explained
   $ netstat -ap | grep ssh
   
   
+***PIPES AND REDIRECTION***
 
+Standard input(0) =  A place a program gets information from; by default, the shell directs standard input from the keyboard.
+Standard ouput(1) =  A place to which a program can send information
+Standard error(2) = Arunning program has a place to send error messages. By default, the shell directs standard error to the screen
 
+[Number in () are file descriptors]
 
+We can redirect these inputs/ouputs using redirection
 
+*Output Redirection using >*
 
+$ echo "this should be in a file" > somefile.txt
+[This creates a file with the output of the command ran]
 
+$ echo "this should be in ine two" >> somefile.txt
+[This appends the ouput to the created file]
+
+$ tophs 2>error.txt
+[Standard Error needs to be manually redirected using the 2 file descriptor. The error.txt contains the error shown on the shell]
+
+*Input redirection using <*
+
+We have a created a file with 4 animals. 
+Cats
+Zebra
+Dogs
+Rhino
+
+We can use input redirection to run sort on the file
+
+$ sort < listtosort.txt
+
+Output would then be
+Cats
+Dogs
+Rhino
+Zebra
+
+*Pipes*
+
+| (Pipes) = Program 1 feeds output into program 2
+
+$ ps aux | less
+[This would run the less command againt the results]
+
+***Filtering Output and Finding Things***
+
+*Logical And or &&*
+
+&& (Logical And) = If program 1 works, program 2 will run. If program 1 fails, program 2 will fail
+
+$ echo "Hello" && echo "Hi sir" 
+[Program 1 runs so then program 2 runs]
+
+Hello
+Hi sir
+
+*Cut*
+
+cut = remove sections from each line of files
+
+We have a file called fredflintstone.txt with the following lines
+one:yabba
+two:dabba
+three:do
+
+We can use cut to sort these
+
+$ cat fredflintstone.txt | cut -d: f2
+yabba
+dabba
+do
+
+[We specify a delimiter with -d and then the character : Then display field 2
+
+If we did field 1
+one
+two 
+three
+
+*sort*
+
+sort = Sort lines of text files
+
+If we sort the fredflintstone.txt
+
+$ sort fredflintstone.txt
+one:yabba
+three:do
+two:dabba
+
+*uniq*
+
+uniq = report or omit repeated lines
+
+If we modify fredflintstone.txt to have duplicate lines
+
+one:yabba
+two:dabba
+three:do
+three:do
+
+$ uniq fredflintstone.txt
+
+Output would omit the second "three:do"
+
+*wc*
+
+wc = print newline, word, and byte counts for each file
+
+$wc fredflintstone.txt
+
+*grep*
+
+grep = print lines matching a pattern
+
+$ grep one fredflinstone.txt
+one:yabba
 
 
 ***PACKAGE MANAGEMENT***
