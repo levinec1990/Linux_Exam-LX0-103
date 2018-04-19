@@ -99,41 +99,7 @@ JCPU - The JCPU time is the time used by all processes attached to the tty.
 PCPU - The PCPU time is the time used by the current process displayed in WHAT field
 WHAT - The command line of users current process
 
-top - Display linux processes
 
-$ top
-
-Output (https://www.booleanworld.com/guide-linux-top-command/)
--System time, uptime and user sessions on the first line
-
--Tasks on the second line, task states are below and how they fall into the 2nd line in top
-  total = Total number of processes
-  running(R) = Processes that are executing on the CPU or in the run queue ready to be executed[Running]
-  Interruptible sleep(D) = Processes that are waiting for an event to complete[Sleeping]
-  Uninterruptible sleep(S) = A process that is waiting for an I/O operation to complete[Sleeping]
-  Stopped(T) = Processes that have been stoppe dby a job control signal[Stopped]
-  Zombie(Z) = Terminated processes whose data structures are still around[Zombie]
-  
--Memory Usage ; Split into two parts 
-  mem - Physical Memory
-  swap - Swap space is a part of the hard disk that is used like RAM. When RAM usage gets too high,
-         infrequently used regions of the RAM are written into the swap space. Relying too much on swap hurts system performance
-         
--Load Average ; First line
-  Explained; A load average of 0.4 means the system is doing only 40% of work it can do. 
-             A load average of 1 means that the system is exactly at capacity. 
-             
--The Task Area
-  PID = Process ID, uniquly identifies a process
-  USER = User who started the process
-  PR/NI = The NI field shows the "nice" value of a process. The PR field shows scheduling priority from the Kernels view. 
-  VIRT = Total ammount of memory consumed by the process
-  RES = Memory consumed by the process in RAM
-  %MEM = RES value as percentage of total RAM available
-  SHR = The ammount of memory shared with other processes
-  S = States the process can be in the single letter form
-  TIME+ = Total CPU time used by process since it started
-  COMMAND = Shows the name of the process
 
 netstat - Print network connections, routing tables, interface statistics
 
@@ -394,3 +360,111 @@ whoami = print who you are logged in as
 id = print user and effective group ids 
 
 ***User Account Management***
+
+*Add a user*
+
+useradd = create a new user or update default new user information
+
+$ useradd -m -d /home/testuser -s /bin/bash testuser
+
+[Creates a home directory (-m), defines the home directory (-d), defines the default shell (-s) and the user name is testuser]
+
+We can confirm the user is created in /etc/passwd
+
+$ tail -f /etc/passwd
+
+*/etc/passwd Explained*
+
+/etc/passwd file stores essential information which is required during login, user account information. 
+
+/etc/passwd contains one entry per line for each user or user account. All fields are seperated by a colon(:). 
+
+chrisubuntu:x:1000:1000:ChrisUbuntu,,,:/home/chrisubuntu:/bin/bash
+
+1: Username = chrisubuntu
+2: Password = An x character indicates an encrypted password is stored in /etc/shadow
+3: User ID (UID) = Each user must be assigned a user ID. 
+      UID 0 is reserved for root 
+      UID 1-99 are reserved for predefined account 
+      UID 100-99 are reserved by system for administrative and system accounts/groups
+4: Group ID(GID) = The primary group ID (stored in /etc/group file)
+5: User ID info = The comment field. It allows you to add extra info about the user such as users full name
+6: Home directory = The absolute path to the directory the user will be in when they log in. 
+7: Command/shell = The absolute path of a command or shell (/bin/bash). 
+
+*Set a Password for a user*
+You must set a password for a user when creating
+
+passwd = change user password
+
+$ passwd testuser 
+Enter new UNIX password:
+Retype new UNIX password:
+
+*Lock/Unlock a user Account*
+
+usermod = modify a user account
+
+To lock
+
+$ usermod -L testuser
+
+We can confirm user is locked in /etc/shadow as a ! will be displayed before their password
+
+testuser:!234234243
+
+To Unlock
+
+$ usermod -U testuser
+
+testuser:234234243
+
+*DELETE A USER*
+
+userdel = delete a user account and related files
+
+$ userdel testuser
+
+Confirm by looking at /etc/passwd
+
+***Processes Overview***
+
+top - Display linux processes
+
+$ top
+
+Output (https://www.booleanworld.com/guide-linux-top-command/)
+-System time, uptime and user sessions on the first line
+
+-Tasks on the second line, task states are below and how they fall into the 2nd line in top
+  total = Total number of processes
+  running(R) = Processes that are executing on the CPU or in the run queue ready to be executed[Running]
+  Interruptible sleep(D) = Processes that are waiting for an event to complete[Sleeping]
+  Uninterruptible sleep(S) = A process that is waiting for an I/O operation to complete[Sleeping]
+  Stopped(T) = Processes that have been stoppe dby a job control signal[Stopped]
+  Zombie(Z) = Terminated processes whose data structures are still around[Zombie]
+  
+-Memory Usage ; Split into two parts 
+  mem - Physical Memory
+  swap - Swap space is a part of the hard disk that is used like RAM. When RAM usage gets too high,
+         infrequently used regions of the RAM are written into the swap space. Relying too much on swap hurts system performance
+         
+-Load Average ; First line
+  Explained; A load average of 0.4 means the system is doing only 40% of work it can do. 
+             A load average of 1 means that the system is exactly at capacity. 
+             
+-The Task Area
+  
+  Process ID, uniquly identifies a process
+  USER = User who started the process
+  PR/NI = The NI field shows the "nice" value of a process. The PR field shows scheduling priority from the Kernels view. 
+  VIRT = Total ammount of memory consumed by the process
+  RES = Memory consumed by the process in RAM
+  %MEM = RES value as percentage of total RAM available
+  SHR = The ammount of memory shared with other processes
+  S = States the process can be in the single letter form
+  TIME+ = Total CPU time used by process since it started
+  COMMAND = Shows the name of the process
+
+
+
