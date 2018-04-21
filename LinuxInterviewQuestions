@@ -1,0 +1,73 @@
+1) How to check the kernel version of a Linux system?
+
+uname = print system info 
+
+$ uname -a
+
+2) How to see the current IP address on Linux?
+
+ifconfig = configure a network interface
+
+$ ifconfig
+
+ip addr
+
+$ ip addr show l0 [loopback 0]
+
+3) How to check for free disk space in Linux?
+
+df = report file system disk space usage
+
+$ df -ah
+[All filesystems A , human readable h]
+
+4) How to see if a Linux service is running?
+
+service = run a System V init script
+
+$ service [program] [status/start/stop]
+
+$ service udev status
+
+OR NEWER COMMAND
+
+systmctl = Control the systemd system and service manager
+
+$ systemctl status udev
+
+5) How to check the size of a directory in Linux?
+
+du = estimate file space usage
+
+$ du -sh   [s = summarize, h = human readable]
+
+6) How to check for open ports in Linux?
+
+netstat = Check network connections, routing tables, open ports
+
+$ netstat -tulpn
+
+7) How do you check cpu usage for a process? 
+
+$ ps aux | grep nginx 
+
+8) How to deal with mounts in Linux?
+
+mount = mount a file system
+
+$ mount [absolute path to volume]
+
+$ mount /dev/sda2 mnt
+
+Check for existing mounts
+
+$ mount
+
+9) How do you look up something you dont know?
+
+man = manual
+
+$ man [command]
+
+
+
