@@ -95,7 +95,9 @@ tty - Terminal type such as pts/0 or console
 From - The remote host or IP address
 Login@ - Login time
 IDLE - Idle time
-JCPU - The JCPU time is the time used by all processes attached to the tty. 
+JCPU - The JCPU time is the time used by all 
+
+es attached to the tty. 
 PCPU - The PCPU time is the time used by the current process displayed in WHAT field
 WHAT - The command line of users current process
 
@@ -465,6 +467,54 @@ Output (https://www.booleanworld.com/guide-linux-top-command/)
   S = States the process can be in the single letter form
   TIME+ = Total CPU time used by process since it started
   COMMAND = Shows the name of the process
+
+***Process Signals***
+
+*STOP A PROCESS*
+
+kill = send a signal to a process
+
+$ kill [pid]
+
+We can also use signals when killing processes
+
+By default signal 15 is used[SIGTERM = Orderley shutdown of process]
+
+kill -9 is used when a process is unresponsive [SIGKILL = Close immediatly]
+
+You can list the signals with 
+$ kill -l 
+
+*STOP PROCESSES BY NAME*
+
+killall = stop processes by name
+
+$ killall [process name]
+
+*STOP PROCESSES BY USER*
+
+pgrep = look up processes based on name
+pkill = Kill groups of processes based on name
+
+Examples
+
+$ pgrep -u root 
+[Finds all process id's for user root]
+
+$ pkill [process]
+[Kills all process with the name specified]
+
+***State, Niceness, and How to monitor processes***
+
+*Process states*
+  running(R) = Processes that are executing on the CPU or in the run queue ready to be executed[Running]
+  Interruptible sleep(D) = Processes that are waiting for an event to complete[Sleeping]
+  Uninterruptible sleep(S) = A process that is waiting for an I/O operation to complete[Sleeping]
+  Stopped(T) = Processes that have been stoppe dby a job control signal[Stopped]
+  Zombie(Z) = Terminated processes whose data structures are still around[Zombie]
+
+*Niceness*
+
 
 
 
