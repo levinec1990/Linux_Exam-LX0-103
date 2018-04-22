@@ -515,6 +515,23 @@ $ pkill [process]
 
 *Niceness*
 
+In Linux we can set guidelines for the CPU to follow when it is looking at all the tasks it has to do. 
+These guidelines are called niceness or nice value. 
+The Linux niceness scale goes from -20 to 19. 
+The lower the number the more priority that task gets. 
+If the niceness value is high number like 19 the task will be set to the lowest priority and the CPU will process it whenever it gets a chance. 
+The default nice value is zero.
 
+nice = run a program with modified scheduling priority 
 
+nice -n [nice value] [command]:
+
+Example
+$ nice -n 10 apt-get upgrade
+[increment the default nice value by a positive 10 for the command, ‘apt-get upgrade']
+
+$ renice 10 -p 21827
+[This will increment the priority of the process with an id of 21827 to 10]
+
+*The /proc filesystem*
 
