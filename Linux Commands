@@ -535,3 +535,113 @@ $ renice 10 -p 21827
 
 *The /proc filesystem*
 
+Procfs or "/proc" is pseudo-filesystem under Linux that is used to present process information and kernel processes. 
+On systems running with a kernel level of 2.6 and above have been moved to another pseudo filesystem called "sysfs" mounted under "/sys". 
+"/proc" is stored in memory, unlike other filesystems, which are stored on disk. 
+  If you list the "/proc" filesystem, you will notice that the majority of files are of a "0" byte length. 
+  However, if you view the data, the data is presented
+
+john@john-desktop:~$ file /proc/uptime 
+/proc/uptime: empty
+
+john@john-desktop:~$ cat /proc/uptime 
+5151.72 2053.73
+
+john@john-desktop:/proc$ ls -F
+1/     1800/  2016/  2290/  2857/  45/        cpuinfo        mounts@
+10/    1818/  2029/  2297/  2861/  584/       crypto         mtrr
+1003/  1855/  2033/  23/    2862/  6/         devices        net@
+1042/  1866/  2083/  2320/  2932/  613/       device-tree/   pagetypeinfo
+11/    19/    21/    2322/  298/   619/       diskstats      partitions
+1105/  1906/  2111/  2324/  299/   64/        dma            sched_debug
+1116/  1909/  2120/  2326/  3/     668/       dri/           schedstat
+1129/  1910/  2122/  233/   3039/  669/       driver/        scsi/
+1153/  1914/  2136/  234/   3046/  670/       execdomains    self@
+1154/  1916/  2138/  2370/  3141/  691/       fb             slabinfo
+1156/  1925/  2151/  2371/  3149/  698/       filesystems    softirqs
+1174/  1934/  2191/  24/    3189/  7/         fs/            stat
+1176/  1942/  22/    2427/  3208/  780/       interrupts     swaps
+1177/  1952/  2201/  2433/  3229/  791/       iomem          sys/
+1181/  1954/  2209/  25/    325/   8/         ioports        sysrq-trigger
+1187/  1955/  2210/  2503/  3257/  821/       irq/           sysvipc/
+12/    1956/  2213/  2508/  326/   823/       kallsyms       timer_list
+1214/  1957/  2220/  2555/  3280/  9/         kcore          timer_stats
+1240/  1958/  2225/  26/    344/   938/       key-users      tty/
+13/    1960/  2226/  2646/  35/    973/       kmsg           uptime
+1303/  1961/  2243/  2653/  37/    982/       kpagecount     version
+14/    1964/  2247/  2654/  38/    988/       kpageflags     version_signature
+15/    1967/  2250/  2655/  4/     acpi/      latency_stats  vmallocinfo
+1586/  1998/  2262/  2659/  40/    asound/    loadavg        vmstat
+16/    2/     2263/  2660/  41/    buddyinfo  locks          zoneinfo
+1602/  2000/  2269/  27/    42/    bus/       mdstat
+17/    2002/  2278/  2848/  425/   cgroups    meminfo
+1768/  201/   2285/  2852/  43/    cmdline    misc
+18/    2013/  2288/  2856/  444/   consoles   modules
+
+The numbers represent a process (PID - Process ID). Each of these numbers is a directory. Within each of these numbered directories are further files that contain information about the running process. 
+
+*Sysfs*
+Many newer distributions of Linux are using "sysfs" mounted on /sys as a way of exporting information from the kernel to various applications. "sysfs" generally contains nine top level directories:
+
+
+john@john-desktop:/sys$ ls -l
+total 0
+drwxr-xr-x   2 root root 0 May 18 20:16 block
+drwxr-xr-x  23 root root 0 May 18 20:16 bus
+drwxr-xr-x  46 root root 0 May 18 20:16 class
+drwxr-xr-x   4 root root 0 May 18 20:16 dev
+drwxr-xr-x  15 root root 0 May 18 20:16 devices
+drwxr-xr-x   4 root root 0 May 18 20:16 firmware
+drwxr-xr-x   7 root root 0 May 18 20:16 fs
+drwxr-xr-x   6 root root 0 May 18 20:16 kernel
+drwxr-xr-x 121 root root 0 May 18 20:16 module
+drwxr-xr-x   2 root root 0 May 18 20:16 power
+
+Brief explanation of directories within "/sys"
+
+/sys/block : Contains known block devices
+
+/sys/bus : Contains all registered buses.
+
+/sys/class : Contains Devices
+
+/sys/device : All devices known by the kernel organised by the bus that they connect to
+
+/sys/firmware : Contains firmware files for some devices
+
+/sys/fs : Contains files to control filesystems
+
+/sys/kernel : Various kernel related files
+
+/sys/module : Loaded kernel modules. Each module is represented by a directory of the same name.
+
+/sys/power : Various files to handle power state of system
+
+***Filesystem Purpose and Absolute/Relative Pathnames***
+
+Absolute Path = An absolute path is defined as specifying the location of a file or directory from the root directory(/)
+
+Examples:
+/home/user/Document/srv.txt
+/root/data/dev.jpg
+/var/log/messages
+
+Relative Path = Path related to the present working directory(pwd)
+
+If I am in /home/chrisubuntu
+
+$ cd Desktop/
+
+***Filesystem Layout Overview***
+/bin = Common Binaries
+/sbin = Binaries used for system administration
+/etc = Configuration files for all the programs that run on your Linux/Unix system
+/tmp = Temporary files are placed here by default, cleared on reboot
+/var = Variable data, such as logs on which is constantly being modified by various programs running on your system
+/home = User HOME directories are found here
+/mnt = Temporary mount point for when you insert your USB stick,it gets mounted under /mnt. 
+       Though in Ubuntu it is usually mounted under /media
+/opt = Third party application packages which does not conform to the standard Linux file hierarchy can be installed here.
+/usr = The secondary hierarchy which contain its own bin and sbin sub-directories
+
+***Linux File Types***
