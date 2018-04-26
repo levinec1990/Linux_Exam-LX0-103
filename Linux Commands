@@ -645,3 +645,16 @@ $ cd Desktop/
 /usr = The secondary hierarchy which contain its own bin and sbin sub-directories
 
 ***Linux File Types***
+There are 7 different types of file types in Linux. 
+
+They are shown at the beginging of a file, they are
+
+- : Regular File
+d : Directory
+c : Character device file = Allow users/programs to communicate with hardware peripheral devices
+b : Block devices = Govern hardware such as hard drives, memory, etc
+s : Local domain sockets = Used for communication between processes such as X windows, syslog, etc
+p : Named pipes = rare
+l : Symoblic link = Assign a file/directory multiple identies used hard/soft links. 
+
+*CRON*
