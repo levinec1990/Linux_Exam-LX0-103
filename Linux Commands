@@ -658,3 +658,48 @@ p : Named pipes = rare
 l : Symoblic link = Assign a file/directory multiple identies used hard/soft links. 
 
 *CRON*
+Cron allows users to run commands/scripts at a given date and time.
+
+Each cron command entry in the crontab file has five time and date fields (followed by a user name, only if it is the system crontab file), followed by a command.
+
+Commands are executed by cron when the minute, hour, and month fields match the current time, 
+AND at least one of the two day fields (day of month, or day of week) match the current day.
+
+The cron daemon checks the crontab once every minute. 
+
+crontab = Used to update/modify the cron files. 
+
+*Two types of Crontab files*
+-Unix/Linux System crontab: Usually, used by system services and critical jobs that requires root like privileges
+-User:  User can install their own cron jobs using the crontab command
+
+*How do I install/create my own cron jobs*
+$ crontab -e
+
+crotab will open in the editor of your choosing
+
+The syntax is:
+
+1 2 3 4 5 /path/to/command arg1 arg2
+
+WHERE 
+(1): Minute (0-59)
+(2): Hours (0-23)
+(3): Day (0-31)
+(4): Month (0-12 [12 == December])
+(5): Day of the week(0-7 [7 or 0 == sunday])
+/path/to/command – Script or command name to schedule
+
+Operators
+The asterisk (*) : This operator specifies all possible values for a field. 
+                   For example, an asterisk in the hour time field would be equivalent to every hour
+The comma (,) : This operator specifies a list of values, for example: “1,5,10,15,20, 25”.
+The dash (-) : This operator specifies a range of values, for example: “5-15” days , which is equivalent to typing “5,6,7,8,9,….,13,14,15” using the comma operator.
+The separator (/) : This operator specifies a step value, for example: “0-23/” can be used in the hours field to specify command execution every other hour. Steps are also permitted after an asterisk, so if you want to say every two hours, just use */2.
+
+*EXAMPLES*
+Run /home/wendy/script.sh every Monday, at 9 A.M. and 6 P.M:
+  0 9,18 * * Mon /home/wendy/script.sh
+  
+
+
